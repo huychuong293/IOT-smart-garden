@@ -1,0 +1,10 @@
+{
+  "hosting": {
+	"site":"iot-utc",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*"
+    ]
+  }
+}

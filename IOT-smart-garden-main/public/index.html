@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Đăng nhập tài khoản</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/auth.js"></script>
+
+</head>
+
+<body class="w-screen h-screen flex justify-center items-center">
+    <div class="overlayout-container">
+        <div class="mx-auto max-w-screen-xl relative px-4 py-16 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-lg text-center">
+                <h1 class="text-2xl font-bold sm:text-3xl text-gray-800">Đăng nhập hệ thống</h1>
+            </div>
+
+            <form id="formLogin" action="#"  class="mx-auto mt-8 mb-0 max-w-md space-y-4">
+                <div>
+                    <label for="email" class="sr-only">Email</label>
+
+                    <div class="relative">
+                        <input type="email" id="email" class="w-full rounded-lg border-gray-200 shadow-md p-4 pr-12 text-sm text-gray-300 "
+                            placeholder="Enter email" />
+
+                        <span class="absolute inset-y-0 right-4 inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <div class="relative">
+                        <input id="password" type="password" class="w-full rounded-lg border-gray-200 p-4 text-sm shadow-md text-gray-300"
+                            placeholder="Enter password" />
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <p class="text-sm text-gray-300">
+                        No account ?
+                        <a class="ml-1 underline hover:text-white transition-colors" href="./register.html">Sign up</a>
+                    </p>
+
+                    <button  type="submit"
+                        class="ml-3 inline-block rounded-lg transition-colors  px-5 py-3 text-sm font-medium text-white hover:text-gray-300 ">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

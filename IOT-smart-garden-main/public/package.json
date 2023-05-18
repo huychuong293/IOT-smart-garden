@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "datatables.net": "^1.11.3",
+    "datatables.net-dt": "^1.11.3",
+    "exceljs": "^4.3.0",
+    "firebase": "^9.6.1",
+    "flatpickr": "^4.6.13",
+    "highcharts": "^9.3.2",
+    "jquery": "^3.6.0",
+    "jquery-ui": "^1.13.2",
+    "jspdf": "^2.5.0",
+    "paginationjs": "^2.1.5",
+    "plotly.js-dist": "^2.6.4",
+    "svg-gauge": "^1.0.7",
+    "uuid": "^8.3.2"
+  }
+}

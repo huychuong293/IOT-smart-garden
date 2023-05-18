@@ -1,0 +1,123 @@
+.s-width-full{
+    width: 100% !important;
+}
+
+@media (max-width: 740px){
+    #header{
+        /* ẩn element con vượt ra khỏi cha */
+        /* overflow: hidden; */
+        display: flex;
+        height:auto;
+        position: fixed;
+    }
+    #sliver{
+        margin-top:0;
+    }
+    #sliver .text-content{
+        bottom:25vh;
+    }
+    #sliver .text-heading{
+        font-size: 75px;
+    }
+    #sliver h2{
+        font-size: 18px;
+    }
+    #sliver h3{
+        font-size: 18px;
+        line-height:50px;
+    }
+    #header, #nav li a{
+        display: block;
+    }
+    
+    
+    #header .search-btn {
+        display: flex;
+    }
+    
+    
+    #nav{
+        display: block;
+    }
+    #nav > li {
+        display: block;
+    }
+    
+    #nav >li:first-child{
+        /* riêng trên mobile bỏ positon:absolute */
+        display: inline-block;
+    }
+    
+    #nav .subnav{
+        /* reset về giá trị mặc định */
+        position: initial;
+        background-color: #333;
+    }
+
+    #nav .subnav a{
+        color:#fff;
+        padding: 20px 42px;
+    }
+    
+    .mobile-menu-btn{
+        display: block;
+        color:#fff;
+        line-height:52.5px;
+        padding: 0px 24px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+
+    .row, .row.member-list, .row.tour-img, .row.information-contact{
+        display: initial;
+    }
+
+    .text-center.member-item{
+        margin-top: 40px;
+    }
+
+    .row.member-list{
+        padding-top: 24px;
+    }
+
+    .column-third{
+        padding: initial;
+    }
+
+    .column-third.tour-img2{
+        margin: 16px 0px;
+    }
+
+    .col-haft.information-input.form-control {
+        margin-top:20px;
+    }
+
+    .col-haft{
+        width: 100%;
+    }
+
+    input.form-contact {
+        margin-top: 12px;
+    }
+
+}
+
+/* mobile and tablet */
+@media only screen and (max-width: 1023px){
+    .tour-img .buy-tickets {
+        padding: 15px 16px;
+    }
+
+    .form-contact{
+        padding:15px;
+    }
+
+    .icon-footer a, .w3-footer {
+        font-size: 30px;
+    }
+    .icon-footer a {
+        margin: 0px 8px;
+    }
+}

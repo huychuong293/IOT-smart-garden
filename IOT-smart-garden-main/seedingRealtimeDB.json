@@ -1,0 +1,39 @@
+{
+  "ActValue": {
+    "Fan": 0,
+    "Light": 77,
+    "Motor": 1,
+    "Pump": 1,
+    "Rain": 1,
+    "Soil": 23,
+    "Temperature": 23,
+    "Warm": 1
+  },
+  "Setting": {
+    "Manual": {
+      "Fan": 0,
+      "Motor": 0,
+      "Pump": 0,
+      "Warm": 1
+    },
+    "Mode": 0,
+    "SetLimit": {
+      "Humidity": {
+        "High": 78,
+        "Low": 22
+      },
+      "Light": {
+        "High": 49,
+        "Low": 25
+      },
+      "Soil": {
+        "High": 33,
+        "Low": 11
+      },
+      "Temperature": {
+        "High": 50,
+        "Low": 50
+      }
+    }
+  }
+}

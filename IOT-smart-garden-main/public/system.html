@@ -1,0 +1,384 @@
+<html lang="en-vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <script src="node_modules/chart.js/dist/chart.js"></script> -->
+    <script lang="javascript" src="dist/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script lang="javascript" src="./node_modules/svg-gauge/dist/gauge.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hệ Thống Vườn Thông Minh </title>
+</head>
+<body>
+    <header class="shadow-sm relative overlayout-container my-4">
+        <div class="mx-auto  z-10 max-w-screen-xl p-4">
+            <div class="flex items-center justify-between gap-4 lg:gap-10">
+                <div class="flex lg:w-0 lg:flex-1">
+                    <a class="" href="#">
+                        <!-- <span class="sr-only">Logo</span>
+                        <span class="h-10 w-20 rounded-lg bg-gray-200"></span> -->
+                        <div class="cercles">
+                            <div class="bouge cercle"></div>
+                            <div class="cercle"></div>
+                            <div class="bouge2 cercle"></div>
+                        </div>
+                        <svg class="absolute">
+                            <filter id="flou">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="flou"></feColorMatrix>
+                            </filter>
+                        </svg>
+                    </a>
+                </div>
+
+                <nav aria-label="Site Nav" class="gap-6 relative z-10 text-sm font-medium flex">
+                    <a class="text-gray-500 transition-colors hover:text-white" href="#">Trang chủ</a>
+                    <a class="text-gray-500 transition-colors text-white hover:text-white" href="./system.html">Hệ
+                        thống</a>
+                    <a class="text-gray-500 transition-colors hover:text-white" href="./history.html">Lịch sử</a>
+                    <a class="text-gray-500 transition-colors hover:text-white cursor-pointer" id="logout">Log out</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="overlayout-container mb-5">
+        <div
+            class="dp-sensor grid grid-cols-1 lg:grid-cols-3 justify-center gap-2 mb-4 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4">
+            <div class="column min-w-[280px] justify-self-center min-h-[150px]">
+                <h2 class="text-gray-300 py-2 text-center">Nhiệt độ không khí</h2>
+                <div class="card-content">
+                    <div id="gaugeTemp" class="gauge-container min-w-[150px]"></div>
+                    <div class="content-ss w-full">
+                        <div class="content-main">
+                            <div class="mb-2">
+                                <span class="text-gray-300">Hiện tại: </span>
+                                <span class="vlact" id="actTemp"></span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-gray-300">Mức cao: </span>
+                                <span class="vlh" id="actTempLimitHigh"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-300">Mức thấp: </span>
+                                <span class="vll" id="actTempLimitLow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column min-w-[280px] justify-self-center min-h-[150px]">
+                <h2 class="text-gray-300 py-2 text-center">Độ ẩm đất</h2>
+                <div class="card-content">
+                    <div id="gaugesoil" class="gauge-container min-w-[150px]"></div>
+                    <div class="content-ss w-full">
+                        <div class="content-main">
+                            <div class="mb-2">
+                                <span class="text-gray-300">Hiện tại:</span>
+                                <span class="vlact" id="actSoil"></span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-gray-300">Mức cao: </span>
+                                <span class="vlh" id="actSoilLimitHigh"></span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-gray-300">Mức thấp: </span>
+                                <span class="vll" id="actSoilLimitLow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column min-w-[280px] justify-self-center min-h-[150px]">
+                <h2 class="text-gray-300 py-2 text-center">Cường độ ánh sáng</h2>
+                <div class="card-content">
+                    <div id="gaugelight" class="gauge-container min-w-[150px]"></div>
+                    <div class="content-ss w-full">
+                        <div class="content-main">
+                            <div class="mb-2">
+                                <span class="text-gray-300">Hiện tại:</span>
+                                <span class="vlact" id="actLight"> </span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="text-gray-300">Mức cao:</span>
+                                <span class="vlh" id="actLightLimitHigh"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-300">Mức thấp:</span>
+                                <span class="vll" id="actLightLimitLow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column min-w-[280px] justify-self-center min-h-[150px]">
+                <h2 class="text-gray-300 py-2 text-center">Thời tiết</h2>
+                <div class="card-content">
+                    <div class="whether min-w-[150px]">
+                        <img id="imgRain" class="object-cover transition-all w-[150px] w-full h-full"
+                            src="./assets/svg/rainy.svg" alt="">
+                    </div>
+                    <div class="content-ss w-full ">
+
+                        <div class="content-main wheather">
+                            <span>
+                                <span class="text-gray-300">Hiện tại: </span>
+                                <span class="vlact" id="actRain"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div
+            class="chart w-full relative z-10 grid grid-cols-1 grid-rows-3 sm:grid-cols-3 md:grid-cols-2 md:grid-rows-2 gap-2 lg:grid-cols-3 lg:grid-rows-1">
+            <div class="chart-wrapper relative w-full h-full">
+                <div id="charttemp" class="temp absolute inset-0 py-2">
+                    <canvas id="chartTemperature"></canvas>
+                    
+                </div>
+            </div>
+
+            <div class="chart-wrapper w-full h-full relative">
+                <div id="charthumi" class="humi absolute inset-0 py-2">
+                    <canvas id="chartHumidity"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-wrapper w-full h-full relative">
+                <div id="chartiten" class="inten inset-0 py-2">
+                    <canvas id="chartIntensity"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <!-- Left -->
+            <div id="child-left" class="left control-manual  hidden lg:flex">
+                <div class="form-child py-2 control-pump">
+                    <div class="header-child">
+                        <h4 class="text-gray-300">Máy Bơm</h4>
+                    </div>
+                    <div class="child-main">
+                        <div class="w-20 h-20 mx-auto">
+                            <img class="pump mx-auto object-cover w-full h-full" id="pumpmanImg" src="image/pumpoff.png"
+                                alt="">
+                        </div>
+                        <label for="pumpToggle" class="relative mt-1 mx-auto block h-6 w-14 cursor-pointer">
+                            <input type="checkbox" id="pumpToggle" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 transition peer-checked:translate-x-8 peer-checked:bg-white"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-child py-2 control-motor">
+                    <div class="header-child">
+                        <h3>Mái che</h3>
+                    </div>
+                    <div class="child-main">
+                        <div class="w-20 h-20 mx-auto">
+                            <img class="pump mx-auto object-cover w-full h-full" id="motormanImg"
+                                src="image/motoroff.png" alt="">
+                        </div>
+                        <label for="motorToggle" class="relative mx-auto block h-6 w-14 cursor-pointer">
+                            <input type="checkbox" id="motorToggle" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 peer-checked:bg-white transition peer-checked:translate-x-8"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Between -->
+            <div class="light-display p-2 h-full w-full">
+                <h1 class="font-semibold text-gray-300">CONTROL PANEL</h1>
+                <div class="ctrl-main">
+                    <div id="mode" class="circle-light ledmode">
+                        <span id="modeLabel"
+                            class="text-xs text-gray-200 text-center select-none font-semibold tracking-wider">MODE</span>
+                    </div>
+                    <div id="temp" class="circle-light ledtemp">
+                        <span class="text-xs text-gray-200 text-center select-none font-semibold tracking-wider">
+                            TEMP</span>
+                    </div>
+                    <div id="humi" class="circle-light ledhumi">
+                        <span
+                            class="text-xs text-gray-200 text-center select-none font-semibold tracking-wider">HUMI</span>
+                    </div>
+                    <div id="iten" id="lediten" class="circle-light ledinten">
+                        <span
+                            class="text-xs text-gray-200 text-center select-none font-semibold tracking-wider">INTEN</span>
+                    </div>
+                </div>
+                <div class="device-ctrl flex justify-evenly mt-8">
+                    <div class="w-full">
+                        <img id="pump" draggable="false" src="image/pumpoff.png" alt="" class="device-item-control mx-auto">
+                    </div>
+                    <!-- <div class="w-full">
+                        <img id="fan" draggable="false" src="image/fanoff.png" alt="" class="device-item-control mx-auto">
+                    </div> -->
+                    <!-- <div class="w-full">
+                        <img id="lamp" draggable="false" src="image/lampoff.png" alt="" class="device-item-control mx-auto">
+                    </div> -->
+                    <div class="w-full">
+                        <img id="warm" draggable="false" src="image/warmoff.png" alt="" class="device-item-control mx-auto">
+                    </div>
+                    <div class="w-full">
+                        <img id="motor" draggable="false" src="image/motoroff.png" alt="" class="device-item-control mx-auto">
+                    </div>
+                </div>
+                <!-- manual control for screen mobile -->
+                <div id="controlManMobile" class="man-controller-group-mobile flex justify-evenly lg:hidden">
+                    <div class="w-full">
+                        <label for="pumpToggleMb" class="relative my-2 mx-auto block h-6 w-12 cursor-pointer">
+                            <input type="checkbox" id="pumpToggleMb" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 peer-checked:bg-white transition peer-checked:translate-x-6"></span>
+                        </label>
+                    </div>
+
+                    <div class="w-full">
+                        <label for="warmToggleMb" class="relative my-2 mx-auto block h-6 w-12 cursor-pointer">
+                            <input type="checkbox" id="warmToggleMb" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 peer-checked:bg-white transition peer-checked:translate-x-6"></span>
+                        </label>
+                    </div>
+
+                    <div class="w-full">
+                        <label for="motorToggleMb" class="relative my-2 mx-auto block h-6 w-12 cursor-pointer">
+                            <input type="checkbox" id="motorToggleMb" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 peer-checked:bg-white transition peer-checked:translate-x-6"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <label for="modeToggle" class="relative block mx-auto my-4 h-6 w-14 cursor-pointer">
+                    <input type="checkbox" id="modeToggle" class="peer sr-only" />
+                    <span
+                        class="absolute inset-0 rounded-full shadow-sm bg-cyan-600 transition peer-checked:bg-green-500"></span>
+                    <span
+                        class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-white transition peer-checked:translate-x-8"></span>
+                </label>
+
+                <div class="form-sp mb-2 gap-2 grid grid-cols-1 sm:grid-cols-3  justify-center items-center ">
+                    <div class="form-child mx-auto py-2 w-full  min-h-[120px]">
+                        <div class="header-child">
+                            <h4 class="text-gray-300">Nhiệt độ</h4>
+                        </div>
+                        <div class="child-main mt-4">
+                            <form action="#" class="input-fill">
+                                <div class="form-field px-2 flex justify-center items-center gap-2 sptemp-high">
+                                    <div class="input relative">
+                                        <input id="tempHigh" type="number" class="form-input py-2" placeholder=" ">
+                                        <label for="name" class="form-label transition-all">HIGH </label>
+                                    </div>
+                                    <div class="input relative">
+                                        <input id="tempLow" type="number" class="form-input py-2" placeholder=" ">
+                                        <label for="name" class="form-label  transition-all">LOW </label>
+                                    </div>
+                                </div>
+                                <button type="button" id="setTempLimit"
+                                    class="btn-enter text-gray-400 text-base  px-4 mx-auto block pointer  py-1 rounded-3 transition-colors mt-3 active:bg-gray-500 active:shadow-md">SET</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-child mx-auto py-2 w-full   min-h-[120px]">
+                        <div class="header-child">
+                            <h4 class="text-gray-300">Độ ẩm</h4>
+                        </div>
+                        <div class="child-main mt-4">
+                            <form action="#" class="input-fill">
+                                <div class="form-field px-2 flex justify-center items-center gap-2 sptemp-high">
+                                    <div class="input relative">
+                                        <input id="soilHigh" type="number" class="form-input py-2" placeholder=" ">
+                                        <label for="soilHigh" class="form-label  transition-all">HIGH </label>
+                                    </div>
+                                    <div class="input relative">
+                                        <input id="soilLow" type="number" class="form-input py-2" placeholder=" ">
+                                        <label for="soilLow" class="form-label  transition-all">LOW </label>
+                                    </div>
+                                </div>
+                                <button type="button" id="setSoilLimit"
+                                    class="btn-enter text-gray-400 text-base  px-4 mx-auto block pointer  py-1 rounded-3 mt-3 transition-colors active:bg-gray-500 active:shadow-md">SET</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-child mx-auto py-2 w-full  min-h-[120px]">
+                        <div class="header-child">
+                            <h4 class="text-gray-300">Cường độ ánh sáng</h4>
+                        </div>
+                        <div class="child-main mt-4">
+                            <form action="#" class="input-fill">
+                                <div class="form-field px-2 flex justify-center items-center gap-2 sptemp-high">
+                                    <div class="input relative">
+                                        <input id="lightHigh" type="number" class="form-input py-2 focus:shadow-sm"
+                                            placeholder=" ">
+                                        <label for="lighHigh" class="form-label transition-all">HIGH </label>
+                                    </div>
+                                    <div class="input relative">
+                                        <input id="lightLow" type="number" class="form-input py-2 focus:shadow-sm"
+                                            placeholder=" ">
+                                        <label for="lightLow" class="form-label  transition-all">LOW </label>
+                                    </div>
+                                </div>
+                                <button type="button" id="setLightLimit"
+                                    class="btn-enter text-gray-400 text-base px-4 mx-auto block pointer  py-1 rounded-3 mt-3 transition-colors active:bg-gray-500 active:shadow-md">SET</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Right -->
+            <div id="child-right" class="right control-manual hidden lg:flex">
+                <div class="form-child control-motor">
+                    <div class="header-child">
+                        <h3 class="text-gray-300">Sưởi <b class="">PID</b></h3>
+                    </div>
+                    <div class="child-main">
+                        <div class="w-20 h-20 mx-auto">
+                            <img class="pump mx-auto object-cover w-full h-full" id="warmmanImg" src="image/warmoff.png"
+                                alt="">
+                        </div>
+                        <label for="warmToggle" class="relative my-2 mx-auto block h-6 w-14 cursor-pointer">
+                            <input type="checkbox" id="warmToggle" class="peer sr-only" />
+                            <span
+                                class="absolute inset-0 rounded-full bg-red-700 transition peer-checked:bg-green-500"></span>
+                            <span
+                                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-gray-300 peer-checked:bg-white transition peer-checked:translate-x-8"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="module" src="./js/system-controller.js"></script>
+    <script  type="module" src="./js/pluggin-service.js"></script>
+</body>
+
+</html>
